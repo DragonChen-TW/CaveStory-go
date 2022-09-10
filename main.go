@@ -3,8 +3,9 @@ package main
 import (
 	"log"
 
+	g "github.com/dragonchen-tw/cavestory-go/pkgs/game"
+
 	"github.com/hajimehoshi/ebiten/v2"
-	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 )
 
 // Author:	DragonChen https://github.com/dragonchen-tw/
@@ -13,22 +14,12 @@ import (
 
 func main() {
 	ebiten.SetWindowSize(640, 480)
-	game := &Game{}
+	game := &g.Game{}
 	if err := ebiten.RunGame(game); err != nil {
-		log.Fatal(err)
+		if err.Error() == "Exit Game" {
+			log.Println("Exit Game")
+		} else {
+			log.Fatal(err)
+		}
 	}
-}
-
-type Game struct{}
-
-func (g *Game) Update() error {
-	return nil
-}
-
-func (g *Game) Draw(screen *ebiten.Image) {
-	ebitenutil.DebugPrint(screen, "Hello, World!")
-}
-
-func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
-	return 640, 480
 }
