@@ -3,13 +3,23 @@ package game
 import (
 	"fmt"
 
+	"github.com/dragonchen-tw/cavestory-go/pkgs/graphics"
+
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 	"github.com/hajimehoshi/ebiten/v2/inpututil"
 )
 
 type Game struct {
-	keys []ebiten.Key
+	keys     []ebiten.Key
+	graphics graphics.Graphics
+}
+
+func NewGame() Game {
+	return Game{
+		keys:     make([]ebiten.Key, 0),
+		graphics: graphics.NewGraphics(),
+	}
 }
 
 func (g *Game) Update() error {
@@ -24,6 +34,7 @@ func (g *Game) Update() error {
 }
 
 func (g *Game) Draw(screen *ebiten.Image) {
+	g.graphics.Draw(screen)
 	ebitenutil.DebugPrint(screen, "Hello, World!")
 	ebitenutil.DebugPrintAt(screen, fmt.Sprintf("FPS: %.02f", ebiten.CurrentTPS()), 0, 12)
 }

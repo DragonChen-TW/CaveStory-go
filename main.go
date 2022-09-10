@@ -14,8 +14,8 @@ import (
 
 func main() {
 	ebiten.SetWindowSize(640, 480)
-	game := &g.Game{}
-	if err := ebiten.RunGame(game); err != nil {
+	game := g.NewGame()
+	if err := ebiten.RunGame(&game); err != nil {
 		if err.Error() == "Exit Game" {
 			log.Println("Exit Game")
 		} else {
