@@ -31,7 +31,11 @@ func NewSprite(
 
 func (s Sprite) Blit(gp graphics.Graphics, x int, y int) {
 	op := &ebiten.DrawImageOptions{}
-	op.GeoM.Translate(float64(x), float64(y))
+	// Move the sprite to the center of the screen
+	op.GeoM.Translate(
+		float64(x)-float64(s.sourceReact.Dx()/2),
+		float64(y)-float64(s.sourceReact.Dy()/2),
+	)
 	img := s.image.SubImage(s.sourceReact).(*ebiten.Image)
 	gp.Blit(img, op)
 }

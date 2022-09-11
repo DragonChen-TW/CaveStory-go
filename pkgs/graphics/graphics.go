@@ -1,8 +1,6 @@
 package graphics
 
 import (
-	"image/color"
-
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 )
@@ -17,7 +15,6 @@ func NewGraphics() Graphics {
 		Screen:   ebiten.NewImage(640, 480),
 		imgCache: make(map[string]*ebiten.Image),
 	}
-	gp.Screen.Fill(color.RGBA{0x30, 0x30, 0x30, 0xff})
 	return gp
 }
 

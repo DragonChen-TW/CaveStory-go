@@ -22,6 +22,8 @@ func NewGame() Game {
 	player := sprite.NewSprite(gp, "imgs/chars.png",
 		0, 0, 32, 32,
 	)
+
+	ebiten.SetWindowResizingMode(ebiten.WindowResizingModeOnlyFullscreenEnabled)
 	return Game{
 		keys:     make([]ebiten.Key, 0),
 		graphics: gp,
