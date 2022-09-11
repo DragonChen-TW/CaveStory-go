@@ -2,6 +2,7 @@ package game
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/dragonchen-tw/cavestory-go/pkgs/graphics"
 	"github.com/dragonchen-tw/cavestory-go/pkgs/sprite"
@@ -12,27 +13,36 @@ import (
 )
 
 type Game struct {
-	keys     []ebiten.Key
-	graphics graphics.Graphics
-	player   sprite.Sprite
+	keys          []ebiten.Key
+	graphics      graphics.Graphics
+	player        sprite.Spriter
+	lastTimeStamp int
 }
 
 func NewGame() Game {
 	gp := graphics.NewGraphics()
-	player := sprite.NewSprite(gp, "imgs/chars.png",
+	// player := sprite.NewSprite(gp, "imgs/chars.png",
+	// 	0, 0, 32, 32,
+	// )
+	player := sprite.NewAnimatedSprite(gp, "imgs/chars.png",
 		0, 0, 32, 32,
+		15, 3,
 	)
 
 	ebiten.SetWindowResizingMode(ebiten.WindowResizingModeOnlyFullscreenEnabled)
 	return Game{
 		keys:     make([]ebiten.Key, 0),
 		graphics: gp,
-		player:   player,
+		player:   &player,
 	}
 }
 
 func (g *Game) Update() error {
 	// Test Sprite
+	nowTime := int(time.Now().UnixMilli())
+	g.player.Update(nowTime - g.lastTimeStamp)
+	g.lastTimeStamp = nowTime
+
 	w, h := g.graphics.Screen.Size()
 	g.player.Blit(g.graphics, w/2, h/2)
 

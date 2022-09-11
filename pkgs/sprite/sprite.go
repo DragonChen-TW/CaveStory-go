@@ -7,9 +7,14 @@ import (
 	"github.com/hajimehoshi/ebiten/v2"
 )
 
+type Spriter interface {
+	Update(int) // update the sprite
+	Blit(gp graphics.Graphics, x int, y int)
+}
+
 type Sprite struct {
-	image       *ebiten.Image
-	sourceReact image.Rectangle
+	image      *ebiten.Image
+	sourceRect image.Rectangle
 }
 
 func NewSprite(
@@ -22,20 +27,22 @@ func NewSprite(
 	}
 	return Sprite{
 		image: img,
-		sourceReact: image.Rect(
+		sourceRect: image.Rect(
 			left, top,
 			left+width, top+height,
 		),
 	}
 }
 
-func (s Sprite) Blit(gp graphics.Graphics, x int, y int) {
+func (s *Sprite) Update(int) {}
+
+func (s *Sprite) Blit(gp graphics.Graphics, x int, y int) {
 	op := &ebiten.DrawImageOptions{}
 	// Move the sprite to the center of the screen
 	op.GeoM.Translate(
-		float64(x)-float64(s.sourceReact.Dx()/2),
-		float64(y)-float64(s.sourceReact.Dy()/2),
+		float64(x)-float64(s.sourceRect.Dx()/2),
+		float64(y)-float64(s.sourceRect.Dy()/2),
 	)
-	img := s.image.SubImage(s.sourceReact).(*ebiten.Image)
+	img := s.image.SubImage(s.sourceRect).(*ebiten.Image)
 	gp.Blit(img, op)
 }
