@@ -1,3 +1,6 @@
+# Mac files
+.DS_Store
+
 # build files
 build_wasm/main.wasm
 
