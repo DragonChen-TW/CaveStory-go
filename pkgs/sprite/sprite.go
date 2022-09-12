@@ -9,7 +9,7 @@ import (
 
 type Spriter interface {
 	Update(int) // update the sprite
-	Blit(gp graphics.Graphics, x int, y int)
+	Draw(gp graphics.Graphics, x int, y int)
 }
 
 type Sprite struct {
@@ -36,7 +36,7 @@ func NewSprite(
 
 func (s *Sprite) Update(int) {}
 
-func (s *Sprite) Blit(gp graphics.Graphics, x int, y int) {
+func (s *Sprite) Draw(gp graphics.Graphics, x int, y int) {
 	op := &ebiten.DrawImageOptions{}
 	// Move the sprite to the center of the screen
 	op.GeoM.Translate(

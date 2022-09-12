@@ -6,7 +6,8 @@ Follow and beyond the series of ["Reconstructing Cave Story"](https://www.youtub
 ## Path
 
 - Implment existing videos
-- Extends the path
+- Write blogs to demonstrate the processing
+- Extends the original videos to more new features
 - Make tutorial videos
 - End with fully-functional/playable game like [doukutsu-rs](https://github.com/doukutsu-rs/doukutsu-rs)
 

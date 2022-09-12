@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/dragonchen-tw/cavestory-go/pkgs/graphics"
-	"github.com/dragonchen-tw/cavestory-go/pkgs/sprite"
+	"github.com/dragonchen-tw/cavestory-go/pkgs/player"
 
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
@@ -15,19 +15,14 @@ import (
 type Game struct {
 	keys          []ebiten.Key
 	graphics      graphics.Graphics
-	player        sprite.Spriter
+	player        *player.Player
 	lastTimeStamp int
 }
 
 func NewGame() Game {
 	gp := graphics.NewGraphics()
-	// player := sprite.NewSprite(gp, "imgs/chars.png",
-	// 	0, 0, 32, 32,
-	// )
-	player := sprite.NewAnimatedSprite(gp, "imgs/chars.png",
-		0, 0, 32, 32,
-		15, 3,
-	)
+	w, h := gp.Screen.Size()
+	player := player.NewPlayer(gp, w/2, h/2)
 
 	ebiten.SetWindowResizingMode(ebiten.WindowResizingModeOnlyFullscreenEnabled)
 	return Game{
@@ -43,8 +38,7 @@ func (g *Game) Update() error {
 	g.player.Update(nowTime - g.lastTimeStamp)
 	g.lastTimeStamp = nowTime
 
-	w, h := g.graphics.Screen.Size()
-	g.player.Blit(g.graphics, w/2, h/2)
+	g.player.Draw(g.graphics)
 
 	// Keyboard
 	g.keys = inpututil.AppendPressedKeys(g.keys[:0])

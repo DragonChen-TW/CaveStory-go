@@ -1,7 +1,6 @@
 package sprite
 
 import (
-	"fmt"
 	"image"
 
 	"github.com/dragonchen-tw/cavestory-go/pkgs/graphics"
@@ -36,7 +35,6 @@ func NewAnimatedSprite(
 
 func (as *AnimatedSprite) Update(elapsedGameTime int) {
 	as.elapsedTime += elapsedGameTime
-	fmt.Println(as.elapsedTime, as.currentFrame)
 
 	if as.elapsedTime >= as.frameTime {
 		as.elapsedTime = 0
@@ -50,6 +48,6 @@ func (as *AnimatedSprite) Update(elapsedGameTime int) {
 	}
 }
 
-func (as *AnimatedSprite) Blit(gp graphics.Graphics, x int, y int) {
-	as.Sprite.Blit(gp, x, y)
+func (as *AnimatedSprite) Draw(gp graphics.Graphics, x int, y int) {
+	as.Sprite.Draw(gp, x, y)
 }
