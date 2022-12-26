@@ -3,7 +3,7 @@ package sprite
 import (
 	"image"
 
-	"github.com/dragonchen-tw/cavestory-go/pkgs/graphics"
+	"github.com/dragonchen-tw/cavestory-go/pkg/graphics"
 )
 
 const (

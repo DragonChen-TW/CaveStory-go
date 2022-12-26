@@ -3,8 +3,8 @@ package player
 import (
 	"fmt"
 
-	"github.com/dragonchen-tw/cavestory-go/pkgs/graphics"
-	"github.com/dragonchen-tw/cavestory-go/pkgs/sprite"
+	"github.com/dragonchen-tw/cavestory-go/pkg/graphics"
+	"github.com/dragonchen-tw/cavestory-go/pkg/sprite"
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/inpututil"
 )
@@ -35,10 +35,10 @@ const (
 )
 
 func NewPlayer(gp graphics.Graphics, x, y int) Player {
-	s := sprite.NewSprite(gp, "imgs/chars.png",
+	s := sprite.NewSprite(gp, "./imgs/chars.png",
 		0, 0, 32, 32,
 	)
-	as := sprite.NewAnimatedSprite(gp, "imgs/chars.png",
+	as := sprite.NewAnimatedSprite(gp, "./imgs/chars.png",
 		0, 0, 32, 32,
 		15, 3,
 	)
