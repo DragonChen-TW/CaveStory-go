@@ -14,3 +14,17 @@ Follow and beyond the series of ["Reconstructing Cave Story"](https://www.youtub
 ## Package
 
 - [Ebitengine](https://github.com/hajimehoshi/ebiten)
+
+## Getting Started
+
+### Terminal with GUI
+
+```shell
+make run
+```
+
+### WASM and webserver
+```shell
+make serve
+# start a simple hosting server
+```

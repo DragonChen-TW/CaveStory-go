@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	g "github.com/dragonchen-tw/cavestory-go/pkgs/game"
+	g "github.com/dragonchen-tw/cavestory-go/pkg/game"
 
 	"github.com/hajimehoshi/ebiten/v2"
 )
