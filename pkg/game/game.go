@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/dragonchen-tw/cavestory-go/pkgs/graphics"
-	"github.com/dragonchen-tw/cavestory-go/pkgs/player"
+	"github.com/dragonchen-tw/cavestory-go/pkg/graphics"
+	"github.com/dragonchen-tw/cavestory-go/pkg/player"
 
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
