@@ -34,6 +34,9 @@ jobs:
     - name: Build with go and Makefile
       run: make build
 
+    - name: Copy image files
+      run: cp -r imgs/ build_wasm/
+
     - name: Upload GitHub Pages artifact
       uses: actions/upload-pages-artifact@v2
       with:
