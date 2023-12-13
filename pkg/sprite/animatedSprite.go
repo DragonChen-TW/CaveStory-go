@@ -20,7 +20,8 @@ type AnimatedSprite struct {
 }
 
 func NewAnimatedSprite(
-	gp graphics.Graphics, path string,
+	gp graphics.Graphics,
+	path string,
 	left, top, width, height int,
 	fps int, numFrames int,
 ) AnimatedSprite {

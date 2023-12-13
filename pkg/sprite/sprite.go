@@ -18,7 +18,8 @@ type Sprite struct {
 }
 
 func NewSprite(
-	gp graphics.Graphics, path string,
+	gp graphics.Graphics,
+	path string,
 	left, top, width, height int,
 ) Sprite {
 	img, ok := gp.LoadImage(path)
