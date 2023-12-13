@@ -59,7 +59,7 @@ func (p *Player) Update(elapsedGameTime int) {
 	p.sprite.Update(elapsedGameTime)
 
 	// Movement (from doukutsu-rs)
-	// Ref https://github.com/doukutsu-rs/doukutsu-rs/blob/master/src/player/mod.rs
+	// Ref https://github.com/doukutsu-rs/doukutsu-rs/blob/a5f49c07e4a161f7ad5ecf97be7126db44f0b80e/src/game/player/mod.rs
 
 	// ground
 	onGround := p.y == 240

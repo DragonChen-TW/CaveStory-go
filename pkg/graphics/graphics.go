@@ -26,6 +26,7 @@ func (g *Graphics) Reset() {
 }
 
 func (gp Graphics) LoadImage(path string) (img *ebiten.Image, ok bool) {
+	// If the image have not been cached, load it from file
 	if img, ok = gp.imgCache[path]; !ok {
 		// Load image from file
 		var err error
